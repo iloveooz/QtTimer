@@ -5,6 +5,10 @@
 #include <QTimer>
 #include <QLineEdit>
 #include <QIntValidator>
+#include <QSoundEffect>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
+#include <QUrl>
 
 namespace Ui {
 class Dialog;
@@ -35,6 +39,9 @@ private:
     QPushButton* button;
     int colorIdx;
     QColor initialBackgroundColor;
+//    QSoundEffect *soundPlayer;
+    QMediaPlaylist *pList;
+    QMediaPlayer *soundPlayer;
 };
 
 #endif // DIALOG_H

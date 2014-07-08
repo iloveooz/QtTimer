@@ -4,11 +4,11 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = WidgetApp
+TARGET = QtTimer
 TEMPLATE = app
 
 
@@ -18,3 +18,8 @@ SOURCES += main.cpp\
 HEADERS  += dialog.h
 
 FORMS    += dialog.ui
+
+QMAKE_CXXFLAGS += -no-icu
+
+RESOURCES += \
+    resources.qrc

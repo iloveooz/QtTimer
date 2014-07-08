@@ -1,8 +1,7 @@
 #include "dialog.h"
 #include "ui_dialog.h"
 #include <QtDebug>
-#include <QLineEdit>
-#include <QIntValidator>
+#include <QFile>
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
@@ -10,7 +9,7 @@ Dialog::Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    intValidator = new QIntValidator(0, 99, this);
+    intValidator = new QIntValidator(0, 59, this);
     textMin = this->findChild<QLineEdit *>("textMin");
     textSec = this->findChild<QLineEdit *>("textSec");
     textMin->setValidator(intValidator);
@@ -21,10 +20,21 @@ Dialog::Dialog(QWidget *parent) :
     colorIdx = 0;
 
     initialBackgroundColor = this->palette().color(QPalette::Background).toRgb();
+
+    soundPlayer = new QMediaPlayer(this);
+    pList = new QMediaPlaylist(this);
+    for(int i = 0; i < 3; i++){
+        pList->addMedia(QUrl(QStringLiteral("qrc:/sound/alarm.wav")));
+    }
+    soundPlayer->setPlaylist(pList);
+    soundPlayer->setVolume(100);
+    qDebug()<<soundPlayer->mediaStatus();
 }
 
 Dialog::~Dialog()
 {
+    delete soundPlayer;
+    delete pList;
     delete intValidator;
     delete timer;
     delete ui;
@@ -98,6 +108,7 @@ void Dialog::on_countdown_timeout(){
         button->setText("Reset");
         connect(timer, SIGNAL(timeout()), this, SLOT(on_reminder_timeout()));
         timer->start(200);        
+        soundPlayer->play();
     }
 }
 
