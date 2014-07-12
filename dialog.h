@@ -31,17 +31,20 @@ private slots:
     void set_Min_Sec(int min, int sec);
     void windows_reset();
 
+    void on_preset05_clicked();
+    void on_preset10_clicked();
+    void on_preset15_clicked();
+    void on_preset20_clicked();
+
 private:
     Ui::Dialog *ui;
     QTimer *timer;
-    QIntValidator *intValidator;
+    QIntValidator *intValidator, *intValidator2;
     QLineEdit* textMin, *textSec;
     QPushButton* button;
     int colorIdx;
-    QColor initialBackgroundColor;
-//    QSoundEffect *soundPlayer;
-    QMediaPlaylist *pList;
-    QMediaPlayer *soundPlayer;
+    QColor initialBackgroundColor, initialButtonColor;
+    QSoundEffect *soundPlayer;
 };
 
 #endif // DIALOG_H
