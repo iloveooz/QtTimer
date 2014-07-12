@@ -19,6 +19,8 @@ Dialog::Dialog(QWidget *parent) :
     button = this->findChild<QPushButton *>("controlButton");
 
     timer = new QTimer(this);
+    timer->setTimerType(Qt::PreciseTimer);
+
     colorIdx = 0;
 
     initialBackgroundColor = this->palette().color(QPalette::Window).toRgb();
