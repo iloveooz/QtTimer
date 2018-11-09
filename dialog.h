@@ -31,6 +31,9 @@ private slots:
     void set_Min_Sec(int min, int sec);
     void windows_reset();
 
+    void on_preset01_clicked();
+    void on_preset02_clicked();
+    void on_preset03_clicked();
     void on_preset05_clicked();
     void on_preset10_clicked();
     void on_preset15_clicked();

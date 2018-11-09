@@ -143,6 +143,24 @@ void Dialog::on_controlButton_clicked()
     }
 }
 
+void Dialog::on_preset01_clicked()
+{
+    textMin->setText("01");
+    textSec->setText("00");
+}
+
+void Dialog::on_preset02_clicked()
+{
+    textMin->setText("02");
+    textSec->setText("00");
+}
+
+void Dialog::on_preset03_clicked()
+{
+    textMin->setText("03");
+    textSec->setText("00");
+}
+
 void Dialog::on_preset05_clicked()
 {
     textMin->setText("05");
